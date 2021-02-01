@@ -1,0 +1,21 @@
+<mvc:View
+	controllerName="sap.ui.demo.nav.controller.Home"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page title="{i18n>homePageTitle}" class="sapUiResponsiveContentPadding">
+		<content>
+		<VBox>
+			<Button text="{i18n>showSecondPage}" press=".onNavToHardCode" class="sapUiTinyMarginEnd"/>
+		</VBox>
+		<VBox>
+			<Button text="{i18n>showSecondPage}" press=".onNavToQuery" class="sapUiTinyMarginEnd"/>
+		</VBox>
+		<VBox>
+			<Button text="{i18n>showSecondPage}" press=".onNavToRestAsString" class="sapUiTinyMarginEnd"/>
+		</VBox>
+		<VBox>
+			<Button text="{i18n>DisplayNotFound}" press=".onDisplayNotFound" class="sapUiTinyMarginEnd"/>
+		</VBox>
+		</content>
+	</Page>
+</mvc:View>
