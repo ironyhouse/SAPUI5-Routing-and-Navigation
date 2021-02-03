@@ -1,0 +1,18 @@
+<mvc:View
+	controllerName="sap.ui.demo.nav.controller.NavParameters"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page title="{i18n>secondPage}"
+		showNavButton="true"
+		navButtonPress=".onNavBack"
+		class="sapUiResponsiveContentPadding">
+		<content>
+			<VBox>
+				<Title text="{i18n>routeParameters}"/>
+			</VBox>
+			<VBox class="sapUiSmallMarginTop">
+				<Text text="" />
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

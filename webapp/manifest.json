@@ -14,16 +14,6 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
-		},
-		"dataSources": {
-			"employeeRemote": {
-				"uri": "/here/goes/your/serviceUrl/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri" : "localService/metadata.xml"
-				}
-			}
 		}
 	},
 	"sap.ui": {
@@ -59,8 +49,9 @@
 					"fallbackLocale": ""
 				}
 			},
-			"": {
-				"dataSource": "employeeRemote"
+			"State": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/State.json"
 			}
 		},
 		"routing": {
@@ -84,56 +75,60 @@
 				},
 				{
 					"pattern": "HardCoded/mandatoryParameter-{mandatory}",
-					"name": "HardCode",
-					"target": ["EmployeeOverviewTop", "EmployeeOverviewContent"]
+					"name": "NavMandatoryParameters",
+					"target": "NavParametersPage"
 				},
 				{
 					"pattern": "query-{?oQuery}",
-					"name": "Query",
-					"target": ["EmployeeOverviewTop", "EmployeeOverviewContent"],
-					"titleTarget": "EmployeeOverview"
+					"name": "NavQueryParameters",
+					"target": "NavParametersPage"
 				},
 				{
 					"pattern": "query-{?oQuery}/restAsString-:*all:",
-					"name": "RestAsString",
-					"target": ["EmployeeOverviewTop", "EmployeeOverviewContent"]
+					"name": "NavRestAsStringParameters",
+					"target": "NavParametersPage"
+				},
+				{
+					"pattern": "SecondPage",
+					"name": "SecondPage",
+					"target": ["SecondPageTop", "SecondPageContent"],
+					"titleTarget": "SecondPageContent"
 				}
 			],
 			"targets": {
 				"home": {
 					"viewId": "home",
 					"viewName": "Home",
-					"viewLevel" : 1
+					"title": "Home Page"
+				},
+				"NavParametersPage": {
+					"viewName": "NavParameters"
 				},
 				"notFound": {
-					"viewId": "notFound",
 					"viewName": "NotFound",
 					"transition": "show"
 				},
-				"EmployeeOverview": {
-					"viewId": "employeeOverview",
-					"viewPath": "sap.ui.demo.nav.view.employee.overview",
-					"viewName": "EmployeeOverview",
-					"viewLevel" : 2,
-					"title": "Page Title"
+				"SecondPage": {
+					"viewId": "SecondPage",
+					"viewPath": "sap.ui.demo.nav.view.SecondPage",
+					"viewName": "SecondPage",
+					"title": "Second Page"
 				},
-				"EmployeeOverviewTop": {
-					"parent": "EmployeeOverview",
-					"viewId": "employeeOverviewTop",
-					"viewPath": "sap.ui.demo.nav.view.employee.overview",
-					"viewName": "EmployeeOverviewTop",
-					"controlId": "EmployeeOverviewParent",
+				"SecondPageTop": {
+					"parent": "SecondPage",
+					"viewPath": "sap.ui.demo.nav.view.SecondPage",
+					"viewName": "SecondPageTop",
+					"controlId": "SecondPageParent",
 					"controlAggregation": "content",
-					"title": "Top"
+					"title": "Top Component Title"
 				},
-				"EmployeeOverviewContent": {
-					"parent": "EmployeeOverview",
-					"viewId": "employeeOverviewContent",
-					"viewPath": "sap.ui.demo.nav.view.employee.overview",
-					"viewName": "EmployeeOverviewContent",
-					"controlId": "EmployeeOverviewParent",
+				"SecondPageContent": {
+					"parent": "SecondPage",
+					"viewPath": "sap.ui.demo.nav.view.SecondPage",
+					"viewName": "SecondPageContent",
+					"controlId": "SecondPageParent",
 					"controlAggregation": "content",
-					"title": "Content"
+					"title": "{{bottomComponent}}"
 				}
 			}
 		}

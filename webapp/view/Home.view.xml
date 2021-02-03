@@ -5,13 +5,16 @@
 	<Page title="{i18n>homePageTitle}" class="sapUiResponsiveContentPadding">
 		<content>
 		<VBox>
-			<Button text="{i18n>showSecondPage}" press=".onNavToHardCode" class="sapUiTinyMarginEnd"/>
+			<Button text="Mandatory" press=".onNavToMandatory" class="sapUiTinyMarginEnd"/>
 		</VBox>
 		<VBox>
-			<Button text="{i18n>showSecondPage}" press=".onNavToQuery" class="sapUiTinyMarginEnd"/>
+			<Button text="Query" press=".onNavToQuery" class="sapUiTinyMarginEnd"/>
 		</VBox>
 		<VBox>
-			<Button text="{i18n>showSecondPage}" press=".onNavToRestAsString" class="sapUiTinyMarginEnd"/>
+			<Button text="Rest As String" press=".onNavToRestAsString" class="sapUiTinyMarginEnd"/>
+		</VBox>
+		<VBox>
+			<Button text="{i18n>showSecondPage}" press=".onNavToEmployee" class="sapUiTinyMarginEnd"/>
 		</VBox>
 		<VBox>
 			<Button text="{i18n>DisplayNotFound}" press=".onDisplayNotFound" class="sapUiTinyMarginEnd"/>

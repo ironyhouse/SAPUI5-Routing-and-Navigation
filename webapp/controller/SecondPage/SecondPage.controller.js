@@ -4,7 +4,7 @@ sap.ui.define(
     "use strict";
 
     return BaseController.extend(
-      "sap.ui.demo.nav.controller.employee.overview.EmployeeOverview",
+      "sap.ui.demo.nav.controller.SecondPage.SecondPage",
       {
         onInit: function () {
           UIComponent.getRouterFor(this).attachTitleChanged(function (oEvent) {
@@ -14,16 +14,14 @@ sap.ui.define(
             document.title = sTitle;
           });
 
-		  UIComponent.getRouterFor(this)
-            .getRoute("employeeOverview")
+          UIComponent.getRouterFor(this)
+            .getRoute("SecondPage")
             .attachPatternMatched(this._onObjectMatched, this);
-		},
+        },
 
-		_onObjectMatched: function (oEvent) {
-			var sArguments = oEvent.getParameter("arguments");
-
-			console.log(sArguments);
-		},
+        _onObjectMatched: function (oEvent) {
+          console.log("SecondPage");
+        },
       }
     );
   }
