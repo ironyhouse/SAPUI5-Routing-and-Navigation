@@ -48,10 +48,6 @@
 					],
 					"fallbackLocale": ""
 				}
-			},
-			"State": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/State.json"
 			}
 		},
 		"routing": {
@@ -74,18 +70,28 @@
 					"target": "home"
 				},
 				{
-					"pattern": "HardCoded/mandatoryParameter-{mandatory}",
-					"name": "NavMandatoryParameters",
+					"pattern": "hardCoded",
+					"name": "HardCoded",
+					"target": "NavParametersPage"
+				},
+				{
+					"pattern": "mandatoryParameter-{mandatoryValue}",
+					"name": "MandatoryParameters",
+					"target": "NavParametersPage"
+				},
+				{
+					"pattern": "optionalParameter-:optionalValue:",
+					"name": "OptionalParameter",
 					"target": "NavParametersPage"
 				},
 				{
 					"pattern": "query-{?oQuery}",
-					"name": "NavQueryParameters",
+					"name": "QueryParameters",
 					"target": "NavParametersPage"
 				},
 				{
-					"pattern": "query-{?oQuery}/restAsString-:*all:",
-					"name": "NavRestAsStringParameters",
+					"pattern": "restAsString-:*all:",
+					"name": "RestAsStringParameters",
 					"target": "NavParametersPage"
 				},
 				{

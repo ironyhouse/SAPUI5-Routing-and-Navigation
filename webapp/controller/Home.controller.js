@@ -20,14 +20,24 @@ sap.ui.define(
         });
       },
 
+      onNavToHardCoded: function () {
+        this.getRouter().navTo("HardCoded", {});
+      },
+
       onNavToMandatory: function () {
-        this.getRouter().navTo("NavMandatoryParameters", {
-          mandatory: "mandatoryValue",
+        this.getRouter().navTo("MandatoryParameters", {
+          mandatoryValue: "123",
+        });
+      },
+
+      onNavToOptional: function () {
+        this.getRouter().navTo("OptionalParameter", {
+          optionalValue: "321",
         });
       },
 
       onNavToQuery: function () {
-        this.getRouter().navTo("NavQueryParameters", {
+        this.getRouter().navTo("QueryParameters", {
           oQuery: {
             category: "notebook",
             price: "desc",
@@ -36,12 +46,7 @@ sap.ui.define(
       },
 
       onNavToRestAsString: function () {
-        this.getRouter().navTo("NavRestAsStringParameters", {
-          oQuery: {
-            category: "notebook",
-            price: "desc",
-          },
-        });
+        this.getRouter().navTo("RestAsStringParameters", {});
       },
 
       onNavToEmployee: function () {

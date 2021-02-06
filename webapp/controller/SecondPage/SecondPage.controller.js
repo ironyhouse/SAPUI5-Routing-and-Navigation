@@ -15,8 +15,9 @@ sap.ui.define(
           });
 
           UIComponent.getRouterFor(this)
-            .getRoute("SecondPage")
-            .attachPatternMatched(this._onObjectMatched, this);
+            // .getRoute("SecondPage")
+            // .attachPatternMatched(this._onObjectMatched, this);
+            .attachRoutePatternMatched(this._onObjectMatched, this);
         },
 
         _onObjectMatched: function (oEvent) {
