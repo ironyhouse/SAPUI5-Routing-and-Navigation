@@ -8,12 +8,12 @@
 		class="sapUiResponsiveContentPadding">
 		<content>
 			<VBox>
-				<Title text="{i18n>routePattern}"/>
+				<Title text="{i18n>routePattern}:"/>
 				<Text class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin" text="Type: {/pattern}" />
 				<Text class="sapUiSmallMarginBottom sapUiSmallMarginBegin" text="Hash: {/hash}" />
 			</VBox>
 			<VBox class="sapUiSmallMarginTop">
-				<Title text="{i18n>routeParameters}"/>
+				<Title text="{i18n>routeParameters}:"/>
 				<Text class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin" text="{/parameters}" />
 			</VBox>
 

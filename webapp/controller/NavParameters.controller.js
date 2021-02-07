@@ -12,12 +12,12 @@ sap.ui.define(
       onInit: function () {
         UIComponent.getRouterFor(this)
           // .getRoute("NavMandatoryParameters")
-          .attachRoutePatternMatched(this._onObjectMatched, this);
+          .attachRouteMatched(this._onObjectMatched, this);
 
         var oModel = new JSONModel({
           pattern: "",
           hash: "",
-          parameters: ""
+          parameters: "",
         });
         this.getView().setModel(oModel);
       },
@@ -25,29 +25,51 @@ sap.ui.define(
       _onObjectMatched: function (oEvent) {
         var sRouteArguments = oEvent.getParameter("arguments"),
           sRouteName = oEvent.getParameter("name"),
-          sParameters = "";
+          sParameters = "",
+          sHash;
 
+        // get page hash
+        sHash = HashChanger.getInstance().getHash();
         // set hash
-        HashChanger.getInstance().attachEvent("hashChanged", function (oEvent) {
-          var sHash = oEvent.getParameter("newHash");
-          this.getView().getModel().setProperty("/hash", "/" + sHash);
-        }.bind(this));
+        this.getView()
+          .getModel()
+          .setProperty("/hash", "/" + sHash);
 
         // set pattern
         this.getView().getModel().setProperty("/pattern", sRouteName);
 
-        // set parameters
-        if (Object.keys(sRouteArguments).length) {
-          Object.entries(sRouteArguments).forEach(function(key) {
-            sParameters += `${key[0]}:`;
-            sParameters += ` ${key[1]}`;
-          }.bind(this))
+        var query;
+        if (Object.keys(sRouteArguments)[0]) {
+          query = Object.keys(sRouteArguments)[0].substr(0, 1);
+        }
+        // create parameters
+        if (query === "?") {
+          sParameters += `{\n`;
+          sParameters += `. . . . ${
+            Object.entries(sRouteArguments)[0][0]
+          }: {\n`;
+          Object.entries(Object.entries(sRouteArguments)[0][1]).forEach(
+            function (key) {
+              sParameters += `. . . . . . . . ${key[0]}:`;
+              sParameters += ` ${key[1]}, \n`;
+            }.bind(this)
+          );
+          sParameters += `. . . . }\n`;
+          sParameters += `}`;
+        } else if (Object.keys(sRouteArguments).length) {
+          sParameters += `{\n`;
+          Object.entries(sRouteArguments).forEach(
+            function (key) {
+              sParameters += `. . . . ${key[0]}:`;
+              sParameters += ` ${key[1]}, \n`;
+            }.bind(this)
+          );
+          sParameters += `}`;
         } else {
           sParameters += `None`;
         }
-
+        // set parameters
         this.getView().getModel().setProperty("/parameters", sParameters);
-        console.log(sParameters)
       },
     });
   }
