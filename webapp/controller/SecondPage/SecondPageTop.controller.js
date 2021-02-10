@@ -13,7 +13,7 @@ sap.ui.define(
             // .attachRoutePatternMatched(this._onObjectMatched, this);
         },
 
-        _onObjectMatched: function (oEvent) {
+        _onObjectMatched: function () {
           console.log("SecondPageTop");
         },
       }

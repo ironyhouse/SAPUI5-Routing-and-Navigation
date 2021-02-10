@@ -10,6 +10,8 @@ sap.ui.define(
           UIComponent.getRouterFor(this).attachTitleChanged(function (oEvent) {
             var sTitle = oEvent.getParameter("title");
 
+            console.log(sTitle)
+
             // Example usage: set the browser page title (optional)
             document.title = sTitle;
           });
@@ -21,7 +23,7 @@ sap.ui.define(
         },
 
         _onObjectMatched: function (oEvent) {
-          console.log("SecondPage");
+          // console.log("SecondPage");
         },
       }
     );

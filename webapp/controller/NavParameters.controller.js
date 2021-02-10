@@ -4,8 +4,9 @@ sap.ui.define(
     "sap/ui/core/UIComponent",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/routing/HashChanger",
+    "sap/ui/core/routing/Route",
   ],
-  function (BaseController, UIComponent, JSONModel, HashChanger) {
+  function (BaseController, UIComponent, JSONModel, HashChanger, Route) {
     "use strict";
 
     return BaseController.extend("sap.ui.demo.nav.controller.NavParameters", {
@@ -15,6 +16,7 @@ sap.ui.define(
           .attachRouteMatched(this._onObjectMatched, this);
 
         var oModel = new JSONModel({
+          name: "",
           pattern: "",
           hash: "",
           parameters: "",
@@ -26,7 +28,17 @@ sap.ui.define(
         var sRouteArguments = oEvent.getParameter("arguments"),
           sRouteName = oEvent.getParameter("name"),
           sParameters = "",
-          sHash;
+          sHash,
+          sPattern;
+
+          console.log(sRouteArguments)
+
+        // get page pattern
+        sPattern = oEvent.mParameters.config.pattern;
+        // get page pattern
+        this.getView()
+          .getModel()
+          .setProperty("/pattern", "/" + sPattern);
 
         // get page hash
         sHash = HashChanger.getInstance().getHash();
@@ -35,8 +47,8 @@ sap.ui.define(
           .getModel()
           .setProperty("/hash", "/" + sHash);
 
-        // set pattern
-        this.getView().getModel().setProperty("/pattern", sRouteName);
+        // set name
+        this.getView().getModel().setProperty("/name", sRouteName);
 
         var query;
         if (Object.keys(sRouteArguments)[0]) {

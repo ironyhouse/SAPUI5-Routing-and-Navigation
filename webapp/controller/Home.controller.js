@@ -21,7 +21,9 @@ sap.ui.define(
       },
 
       onNavToHardCoded: function () {
-        this.getRouter().navTo("HardCoded", {});
+        this.getRouter().navTo("HardCoded", {
+          // mandatoryValue: "123"
+        });
       },
 
       onNavToMandatory: function () {
